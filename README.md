@@ -1,6 +1,4 @@
-# **IMAGE MATCHING \+ IMAGE**
-
-# **COMPRESSION**
+# **IMAGE MATCHING \+ IMAGE COMPRESSION**
 
 # **IMAGE COMPRESSION**
 
@@ -17,9 +15,7 @@ Image compression techniques can be broadly categorized into two main types:
 
    original image without any loss of information. Lossless compression is suitable for scenarios where image fidelity is critical, such as medical imaging or text documents.
 
-1. **Lossy Compression:** Lossy compression algorithms achieve higher compression ratios by selectively discarding less important image information during compression. While this
-
-   results in some loss of image quality, the human visual system may tolerate such losses to a certain extent without significant perceptual degradation. Lossy compression is widely used in applications like digital photography, web images, and video compression.
+1. **Lossy Compression:** Lossy compression algorithms achieve higher compression ratios by selectively discarding less important image information during compression. While this results in some loss of image quality, the human visual system may tolerate such losses to a certain extent without significant perceptual degradation. Lossy compression is widely used in applications like digital photography, web images, and video compression.
 
 ## **Methods:**
 
@@ -118,9 +114,7 @@ transforming the image data or using complex algorithms, BTC operates by dividin
 
 The Block Truncation Coding (BTC) algorithm is an image compression technique that operates on blocks of pixels within an image. Initially, the algorithm divides the input image into non-overlapping blocks of a specified size (e.g., 8x8 pixels). For each block, BTC computes statistical parameters such as the mean and variance, which are used to determine the lower and upper bounds for quantization. Pixels above the mean are set to an upper value (**b**), while pixels below or equal to the mean are set to a lower value (**a**).
 
-This process creates a binary bitmap indicating which pixels were quantized to **b**. During
-
-decompression, the quantized image and bitmap are used to reconstruct the compressed image. BTC's simplicity and efficiency make it suitable for applications where moderate compression ratios are acceptable, especially in scenarios with limited computational resources or where simplicity is favored over high compression efficiency.
+This process creates a binary bitmap indicating which pixels were quantized to **b**. During decompression, the quantized image and bitmap are used to reconstruct the compressed image. BTC's simplicity and efficiency make it suitable for applications where moderate compression ratios are acceptable, especially in scenarios with limited computational resources or where simplicity is favored over high compression efficiency.
 
 ## **Observations:**
 
@@ -241,23 +235,16 @@ image matching is to establish relationships between images based on their visua
 
    NG-SIFT (Normalized \-gardient SIFT) is a variant of the Scale-Invariant Feature Transform
 
-   (SIFT) algorithm used for extracting keypoints and descriptors from images. Unlike traditional SIFT, which relies on gradient information, NG-SIFT utilizes non-gravitational gradients, computed from magnitude and angle information obtained through methods like Sobel
-
-   operators. This approach allows NG-SIFT to be robust to image rotations and translations, making it suitable for various computer vision tasks such as object recognition, image
-
-   stitching, and feature matching.
+   (SIFT) algorithm used for extracting keypoints and descriptors from images. Unlike traditional SIFT, which relies on gradient information, NG-SIFT utilizes non-gravitational gradients, computed from magnitude and angle information obtained through methods like Sobel operators. This approach allows NG-SIFT to be robust to image rotations and translations, making it suitable for various computer vision tasks such as object recognition, image stitching, and feature matching.
 
 1. ## **PCA-Sift**
 
-   PCA-SIFT is an adaptation of the SIFT algorithm, aiming to overcome computational
-
-   challenges while maintaining feature quality. It utilizes Principal Component Analysis (PCA) to reduce feature dimensionality without compromising discriminative power. This enhances computational efficiency without sacrificing accuracy, making it suitable for large-scale and real-time applications in computer vision and image processing.
+   PCA-SIFT is an adaptation of the SIFT algorithm, aiming to overcome computational challenges while maintaining feature quality. It utilizes Principal Component Analysis (PCA) to reduce feature dimensionality without compromising discriminative power. This enhances computational efficiency without sacrificing accuracy, making it suitable for large-scale and real-time applications in computer vision and image processing.
 
 1. ## **A-Sift**
 
    Affine SIFT (A-SIFT) extends the traditional SIFT algorithm to handle affine transformations like shearing, scaling, and skewing, in addition to rotation and translation invariance. These
-
-   transformations commonly occur in real-world scenarios, especially in object recognition and scene understanding tasks. By detecting affine-covariant keypoints and computing affine- invariant descriptors, A-SIFT enables more accurate feature matching across a wider range of geometric transformations. This enhancement is crucial for robust feature-based image processing, particularly in scenarios where objects undergo non-rigid deformations or perspective changes.
+transformations commonly occur in real-world scenarios, especially in object recognition and scene understanding tasks. By detecting affine-covariant keypoints and computing affine- invariant descriptors, A-SIFT enables more accurate feature matching across a wider range of geometric transformations. This enhancement is crucial for robust feature-based image processing, particularly in scenarios where objects undergo non-rigid deformations or perspective changes.
 
 
 1. ## **Mops**
@@ -288,15 +275,11 @@ image matching is to establish relationships between images based on their visua
 
 1. # **PSR-EM**
 
-   PSR-EM (Patch Similarity Ratio and Expectation Maximization using Gaussian Mixture Models) combines patch similarity ratio with the Expectation Maximization (EM) algorithm and Gaussian Mixture Models (GMMs) for improved image matching. Initially, GMMs are fitted to the feature descriptors of both images, and the means are extracted. These means serve as the initialization for fitting the descriptors again, followed by computing the log
-
-   likelihood of descriptors in one image using the GMM fitted in the other image. Matches are determined based on the closest log likelihood values, establishing correspondence between features in the images. This iterative process refines matching, enhancing accuracy and robustness in image feature correspondence.
+   PSR-EM (Patch Similarity Ratio and Expectation Maximization using Gaussian Mixture Models) combines patch similarity ratio with the Expectation Maximization (EM) algorithm and Gaussian Mixture Models (GMMs) for improved image matching. Initially, GMMs are fitted to the feature descriptors of both images, and the means are extracted. These means serve as the initialization for fitting the descriptors again, followed by computing the log likelihood of descriptors in one image using the GMM fitted in the other image. Matches are determined based on the closest log likelihood values, establishing correspondence between features in the images. This iterative process refines matching, enhancing accuracy and robustness in image feature correspondence.
 
 1. ## **BF matcher**
 
-   The Brute-Force Matcher is a straightforward method for feature matching that computes the distances between all pairs of descriptors and selects the nearest neighbors. In image matching, the BF Matcher compares each feature descriptor in one image with all
-
-   descriptors in another image, making it computationally expensive but exhaustive in finding matches.
+   The Brute-Force Matcher is a straightforward method for feature matching that computes the distances between all pairs of descriptors and selects the nearest neighbors. In image matching, the BF Matcher compares each feature descriptor in one image with all descriptors in another image, making it computationally expensive but exhaustive in finding matches.
 
 # **IMPLEMENTATION OF IMAGE MATCHING ALGORITHMS**
 
@@ -306,9 +289,7 @@ image matching is to establish relationships between images based on their visua
 
 **Lowe’s ratio \= 0.3698…**
 
-Combining SIFT feature extraction with FLANN-based matching generally yields favorable results in terms of efficiency and robustness. However, occasional false matches between descriptors can
-
-occur due to factors like ambiguous local features, noise, parameter sensitivity, and challenging geometric transformations. Ransac is applied is such cases to remove the outliers. Although we are getting lowe’s ratio 0.36 but after implementing the algorithm we get 100 % good matches.
+Combining SIFT feature extraction with FLANN-based matching generally yields favorable results in terms of efficiency and robustness. However, occasional false matches between descriptors can occur due to factors like ambiguous local features, noise, parameter sensitivity, and challenging geometric transformations. Ransac is applied is such cases to remove the outliers. Although we are getting lowe’s ratio 0.36 but after implementing the algorithm we get 100 % good matches.
 
 2)SIFT \+ GALE SHAPELY
 
@@ -360,11 +341,7 @@ accuracy and reliability. The final pruned match set reflects robust corresponde
 
 ## **Observations**
 
-NG-SIFT (Normalized Gradient SIFT) integrates gradient normalization with SIFT feature detection and FLANN-based matching for robust and efficient image matching. By normalizing gradients, the method enhances resilience to illumination variations, ensuring consistent feature representation
-
-across images. Keypoints and descriptors computed using NG-SIFT are invariant to changes in lighting conditions, improving the reliability of feature matching. FLANN facilitates fast and accurate
-
-correspondence estimation between keypoints, enabling efficient image analysis tasks such as object recognition and image retrieval. Lowe’s ratio is 1 in this case that means we are getting 100% good matches.
+NG-SIFT (Normalized Gradient SIFT) integrates gradient normalization with SIFT feature detection and FLANN-based matching for robust and efficient image matching. By normalizing gradients, the method enhances resilience to illumination variations, ensuring consistent feature representation across images. Keypoints and descriptors computed using NG-SIFT are invariant to changes in lighting conditions, improving the reliability of feature matching. FLANN facilitates fast and accurate correspondence estimation between keypoints, enabling efficient image analysis tasks such as object recognition and image retrieval. Lowe’s ratio is 1 in this case that means we are getting 100% good matches.
 
 # **\*\*DEEP LEARNING BASED IMAGE MATCHING\*\***
 
@@ -398,9 +375,7 @@ The Image\_Stitching class provides functionality for stitching images together 
 
 References:
 
-1\)
-
-https://[www.analyticsvidhya.com/blog/2019/10/detail](http://www.analyticsvidhya.com/blog/2019/10/detail) ed-guide-powerful-sift-technique-image-matching- python/
+1\) https://[www.analyticsvidhya.com/blog/2019/10/detail](http://www.analyticsvidhya.com/blog/2019/10/detail) ed-guide-powerful-sift-technique-image-matching- python/
 
 2) https://[www.ipol.im/pub/art/2011/my-](http://www.ipol.im/pub/art/2011/my-) asift/article\_lr.pdf
 
